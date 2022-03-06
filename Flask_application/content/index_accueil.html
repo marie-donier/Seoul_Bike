@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="utf-8">
+
+<title>Projet Python & Data Analysis - Audrey CHMIEL & Marie DONIER</title>
+	<link href='http://fonts.googleapis.com/css?family=Maven+Pro:400' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+	<div>
+		<h1>Prediction of bike count required for the stable supply of rental bikes</h1>
+			<form action="{{ url_for('get_prediction')}}"method="post">
+				<div class="box">
+					<div>
+						<FONT size="6pt"> 
+						<FONT color="LightSeaGreen"> 
+						<label for="time_factor">Time Factors : </label>
+						</FONT>
+						</FONT>
+						<br>
+						<br>
+						
+						<label for="date">Date : </label>
+							<input type="date" id="date" name="date"
+								   value="2019-01-01"
+								   min="2018-12-01" 
+								   required="required"/>
+						<br>
+						<br>
+						
+						<label for="hour">Hour : </label>
+							<input type="time" id="hour" name="hour"
+								   value="08:00"
+								   step="3600"
+								   required="required"/>
+						<br>
+						<br>
+						
+						
+						
+						<label for="holiday">Holiday : </label>
+							<select name="Holiday_selection" id="holiday_selection" required="required">
+								<option value="">- Choose an option -</option>
+								<option value="yes">yes</option>
+								<option value="no">no</option>
+							</select>
+						<br>
+						<br>
+						
+						<label for="f_day">Functional day/hours : </label>
+							<select name="F_day_selection" id="f_day_selection" required="required">
+								<option value="">- Choose an option -</option>
+								<option value="yes">yes</option>
+								<option value="no">no</option>
+							</select>
+						<br>
+						<br>
+					
+					</div>
+					
+					<div>
+						<img src="{{url_for('static', filename='bike.jpg')}}" align="right" width="420px" height="370px"/>
+					</div>
+					
+					<div>
+						<FONT size="6pt"> 
+						<FONT color="LightSeaGreen"> 
+						<label for="time_factor">Meteorological Factors : </label>
+						</FONT>
+						</FONT>
+						<br>
+						<br>
+						
+						<label for="temperature">Temperature : </label>
+							<input type="number" step=".01" id="temperature" name="temperature"
+								   min="-25.00" max="50.00"
+								   required="required"/>
+							<small> °C</small>
+						<br>
+						<br>
+						
+						<label for="humidity">Humidity : </label>
+							<input type="number" step=".01" id="humidity" name="humidity"
+								   min="0" max="100"
+								   required="required"/>
+							<small> %</small>
+						<br>
+						<br>
+						
+						<label for="windspeed">Windspeed : </label>
+							<input type="number" step=".01" id="windspeed" name="windspeed"
+								   min="0" max="200"
+								   required="required"/>
+							<small> m/s</small>
+						<br>
+						<br>
+						
+						<label for="visibility">Visibility at 10 metres : </label>
+							<input type="number" step="1" min="0" id="visibility" name="visibility"
+								   required="required"/>
+						<br>
+						<br>
+						
+						<label for="dew_point_temperature">Dew point temperature : </label>
+							<input type="number" step="0.01" id="dew_point_temperature" name="dew_point_temperature"
+								   min="-50" max="70"
+								   required="required"/>
+							<small> °C</small>
+						<br>
+						<br>
+						
+						<label for="solar_radiation">Solar radiation : </label>
+							<input type="number" step=".01" id="solar_radiation" name="solar_radiation"
+								   min="0"
+								   required="required"/>
+							<small> MJ/m2</small>
+						<br>
+						<br>
+						
+						<label for="rainfall">Rainfall : </label>
+							<input type="number" step=".01" id="rainfall" name="rainfall"
+								   min="0"
+								   required="required"/>
+							<small> mm</small>
+						<br>
+						<br>
+						
+						<label for="snowfall">Snowfall : </label>
+							<input type="number" step=".01" id="snowfall" name="snowfall"
+								   min="0"
+								   required="required"/>
+							<small> cm</small>
+					</div>
+					
+					
+				</div>
+						
+				<div class="container">
+				  <div class="center">
+					<button type="submit" class="btn">Get the bike count prediction</button>
+				  </div>
+				  
+				  <br>
+				  <br>
+				  
+				  <div class="center_prediction">
+					{{ output }}
+				  </div>
+				  
+				</div>
+				
+			</form>
+
+		<br>
+	    <br>
+	    
+		
+	</div>
+</body>
+</html>
